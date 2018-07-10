@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.test.dao.IUserDao">
+    <resultMap id="UserResultMap" type="com.test.pojo.User">
+		<id column="id" property="id" jdbcType="INTEGER" />
+		<result column="name" property="name" jdbcType="VARCHAR" />
+		<result column="pwd" property="pwd" jdbcType="VARCHAR" />
+    </resultMap>
+  <select id="findUser" resultMap="UserResultMap">
+        select * from t_user
+    </select>
+
+  <select id="findById" resultMap="UserResultMap">
+        select * from t_user where id = #{id}
+    </select>
+    
+     <select id="findByName" resultMap="UserResultMap">
+        select * from t_user where name = #{name}
+    </select>
+
+  <insert id="saveUser">
+        insert into t_user values(#{id}, #{name},#{pwd})
+    </insert>
+    
+</mapper>

@@ -1,0 +1,46 @@
+spring:
+  #db
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=utf-8
+    username: root
+    password: 123456
+    max-wait: 10000
+    max-active: 50
+    test-on-borrow: false
+  #jpa
+  jpa:
+       database: MYSQL
+       show-sql: true
+       hibernate:
+           ddl-auto: update
+       properties:
+           hibernate:
+               dialect: org.hibernate.dialect.MySQL5Dialect
+   
+  #spring.thymeleaf.cache=false
+  thymeleaf:
+         cache: false
+  #devtools
+  devtools:
+       restart:
+          exclude: static/**,public/**
+          additional-paths: src/test/java/com/test
+#server
+server:
+   session-timeout: 30
+   context-path: /test1
+  
+#mybatis
+mybatis: 
+     mapper-locations: classpath:mybatis/mapper/*Mapper.xml
+     #config-locations: classpath:mybatis/mybatis-config.xml
+     type-aliases-package: com.test.pojo
+     
+#logging 
+logging:
+    level:
+        org.springframework.security: INFO
+
+
+
